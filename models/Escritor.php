@@ -23,7 +23,7 @@
         
         public function insert_escritor($NumeroEscritor,$NombreEscritor,$ApellidosEscritor,$FechaNacimiento,$Nacionalidad,$CantidadLibrosEscritos,$Email){
             $conectar= parent:: conexion();
-            parent::set_name();
+            parent::set_names();
             $sql="INSERT INTO Escritor (NumeroEscritor,NombreEscritor,ApellidosEscritor,FechaNacimiento,Nacionalidad,CantidadLibrosEscritos,Email)
             VALUES (?,?,?,?,?,?,?);";
             $sql=$conectar->prepare($sql);
@@ -40,7 +40,7 @@
 
         public function update_escritor($NumeroEscritor,$NombreEscritor,$ApellidosEscritor,$FechaNacimiento,$Nacionalidad,$CantidadLibrosEscritos,$Email){
             $conectar= parent:: conexion();
-            parent::set_name();
+            parent::set_names();
             $sql="UPDATE Escritor SET NumeroEscritor=$NumeroEscritor, NombreEscritor=$NombreEscritor, ApellidosEscritor=$ApellidosEscritor, 
                     FechaNacimiento=$FechaNacimiento, Nacionalidad=$Nacionalidad, CantidadLibrosEscritos=$CantidadLibrosEscritos, 
                     Email=$Email WHERE NumeroEscritor=$NumeroEscritor ;";
@@ -59,7 +59,7 @@
 
         public function delete_escritor($NumeroEscritor){
             $conectar= parent:: conexion();
-            parent::set_name();
+            parent::set_names();
             $sql="DELETE FROM Escritor WHERE NumeroEscritor=$NumeroEscritor ;";
             $sql=$conectar->prepare($sql);
             $sql->bindValue(1,$NumeroEscritor);
