@@ -1,6 +1,6 @@
 <?php 
-    classConectar{
-        
+    class Conectar{
+
     }
 
 ?>
