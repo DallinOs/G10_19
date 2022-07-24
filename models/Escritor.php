@@ -11,10 +11,10 @@
             return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
         }
 
-        public function get_escritores(){
+        public function get_escritores($NumeroEscritor){
             $conectar= parent::conexion();
             parent::set_names();
-            $sql="SELECT * FROM escritor WHERE ID=?";
+            $sql="SELECT * FROM escritor WHERE NumeroEscritor=?";
             $sql=$conectar->prepare($sql);
             $sql->bindValue(1,$NumeroEscritor);
             $sql->execute();
@@ -41,10 +41,7 @@
         public function update_escritor($NumeroEscritor,$NombreEscritor,$ApellidosEscritor,$FechaNacimiento,$Nacionalidad,$CantidadLibrosEscritos,$Email){
             $conectar= parent:: conexion();
             parent::set_names();
-            $sql="UPDATE Escritor SET NumeroEscritor=$NumeroEscritor, NombreEscritor=$NombreEscritor, ApellidosEscritor=$ApellidosEscritor, 
-                    FechaNacimiento=$FechaNacimiento, Nacionalidad=$Nacionalidad, CantidadLibrosEscritos=$CantidadLibrosEscritos, 
-                    Email=$Email WHERE NumeroEscritor=$NumeroEscritor ;";
-            
+            $sql="UPDATE Escritor SET NumeroEscritor=?, NombreEscritor=?, ApellidosEscritor=?, FechaNacimiento=?, Nacionalidad=?, CantidadLibrosEscritos=?, Email=? WHERE NumeroEscritor=$NumeroEscritor;";
             $sql=$conectar->prepare($sql);
             $sql->bindValue(1,$NumeroEscritor);
             $sql->bindValue(2,$NombreEscritor);
@@ -60,12 +57,15 @@
         public function delete_escritor($NumeroEscritor){
             $conectar= parent:: conexion();
             parent::set_names();
-            $sql="DELETE FROM Escritor WHERE NumeroEscritor=$NumeroEscritor ;";
+            $sql="DELETE FROM Escritor WHERE NumeroEscritor=?;";
             $sql=$conectar->prepare($sql);
             $sql->bindValue(1,$NumeroEscritor);
             $sql->execute();
             return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
         }
+
+
+
 
 
     }
