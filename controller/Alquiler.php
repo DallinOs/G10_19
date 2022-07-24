@@ -30,18 +30,18 @@
         break;
 
         case "InsertAlquiler":
-            $datos=$alquiler->insert_Alquiler($body["CodigoDeLibro"],$body["NombreLibro"],$body["FechaAlqui"],$body["NombreCliente"],$body["Direccion"],$body["DiasAlqui"],$body["PrecioAlqui"]);
+            $datos=$alquiler->insert_alquiler($body["CodigoDeLibro"],$body["NombreLibro"],$body["FechaAlqui"],$body["NombreCliente"],$body["Direccion"],$body["DiasAlqui"],$body["PrecioAlqui"]);
             echo json_encode("Registro de Alquiler Agregado");
         break;
 
         case "UpdateAlquiler":
-            $datos=$alquiler->update_alquiler($body["CodigoDeLibro"],$body["NombreLibro"],$body["FechaAlqui"],$body["NombreCliente"],$body["Direccion"],$body["DiasAlqui"],$body["PrecioAlqui"]);
+            $datos=$alquiler->update_Alquiler($body["CodigoDeLibro"],$body["NombreLibro"],$body["FechaAlqui"],$body["NombreCliente"],$body["Direccion"],$body["DiasAlqui"],$body["PrecioAlqui"]);
             echo json_encode("Registro de Alquiler Actualizado");
         break;
 
         case "DeleteAlquiler":
-            $datos=$alquiler->update_alquiler($body["CodigoDeLibro"]);
+            $datos=$alquiler->delete_alquiler($body["CodigoDeLibro"]);
             echo json_encode("Registro de Alquiler Eliminado");
         break;
-    }
-?>
+    }?>
+    

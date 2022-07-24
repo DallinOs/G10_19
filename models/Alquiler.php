@@ -14,7 +14,7 @@
             parent::set_names();
             $sql="SELECT * FROM Alquiler WHERE CodigoDeLibro=?";
             $sql=$conectar->prepare($sql);
-            $sql->binValue(1,$CodigoDeLibro);
+            $sql->bindValue(1,$CodigoDeLibro);
             $sql->execute();
             return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
         }
@@ -36,10 +36,10 @@
             return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
         }
 
-        public function update_alquiler($CodigoDeLibro,$NombreLibro,$FechaAlqui,$NombreCliente,$Direccion,$DiasAlqui,$PrecioAlqui){
+        public function update_Alquiler($CodigoDeLibro,$NombreLibro,$FechaAlqui,$NombreCliente,$Direccion,$DiasAlqui,$PrecioAlqui){
             $conectar= parent:: conexion();
             parent::set_names();
-            $sql="UPDATE Alquiler set CodigoDeLibro=$CodigoDeLibro, NombreLibro=$NombreLibro, FechaAlqui=$FechaAlqui, NombreCliente=$NombreCliente, Direccion=$Direccion, DiasAlqui=$DiasAlqui, PrecioAlqui=$PrecioAlqui WHERE CodigoDeLibro=$CodigoDeLibro ;";
+            $sql="UPDATE Alquiler set CodigoDeLibro=?, NombreLibro=?, FechaAlqui=?, NombreCliente=?, Direccion=?, DiasAlqui=?, PrecioAlqui=? WHERE CodigoDeLibro=$CodigoDeLibro";
             $sql=$conectar->prepare($sql);
             $sql->bindValue(1,$CodigoDeLibro);
             $sql->bindValue(2,$NombreLibro);
@@ -52,10 +52,10 @@
             return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
         }
 
-        public function delete_alquiler($CodigoDeLibro){
+        public function delete_Alquiler($CodigoDeLibro){
             $conectar= parent:: conexion();
             parent::set_names();
-            $sql="DELETE FROM Alquiler  WHERE CodigoDeLibro=$CodigoDeLibro ;";
+            $sql="DELETE FROM Alquiler  WHERE CodigoDeLibro=?;";
             $sql=$conectar->prepare($sql);
             $sql->bindValue(1,$CodigoDeLibro);
             $sql->execute();
