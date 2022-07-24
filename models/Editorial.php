@@ -1,4 +1,5 @@
 <?php
+Class Editorial extends Conectar{
     public function get_Editorial(){     
         $conectar= parent::conexion();            
         parent::set_names();         
@@ -8,13 +9,12 @@
         return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);      
     }
 
-    public function get_Editorial($NumeroEditorial){
+    public function get_Editoriales($NumeroEditorial){
         $conectar=parent::conexion();
         parent::set_names();
-        $sql="SELECT * FROM Editorial WHERE 
-        NumeroEditorial=?";
+        $sql="SELECT * FROM Editorial WHERE NumeroEditorial=?";
         $sql=$conectar->prepare($sql);
-        $sql->binValue(1,$NumeroEditorial);
+        $sql->bindValue(1,$NumeroEditorial);
         $sql->execute();
         return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -38,7 +38,7 @@
     public function update_Editorial($NumeroEditorial,$NombreEditorial,$Direccion,$Pais,$FechaDeFundacion,$CantidadDeLibrosImpresos,$NumeroDeTelefono){   
         $conectar= parent:: conexion();        
         parent::set_names();         
-        $sql="UPDATE Editorial set NumeroEditorial=$NumeroEditorial, NombreEditorial=$NombreEditorial, Direccion=$Direccion, Pais=$Pais, FechaDeFundacion=$FechaDeFundacion, CantidadDeLibrosImpresos=$CantidadDeLibrosImpresos, NumeroDeTelefono=$NumeroDeTelefono WHERE NumeroEditorial=$NumeroEditorial ;";         
+        $sql="UPDATE Editorial set NumeroEditorial= ?, NombreEditorial=?, Direccion=?, Pais=?, FechaDeFundacion=?, CantidadDeLibrosImpresos=?, NumeroDeTelefono=? WHERE NumeroEditorial=$NumeroEditorial ;" ;         
         $sql=$conectar->prepare($sql);         
         $sql->bindValue(1,$NumeroEditorial);        
         $sql->bindValue(2,$NombreEditorial);        
@@ -55,13 +55,14 @@
           
         $conectar= parent:: conexion();      
         parent::set_names();      
-        $sql="DELETE FROM Editorial  WHERE 
-        NumeroEditorial= $NumeroEditorial ;";       
+        $sql="DELETE FROM Editorial  WHERE NumeroEditorial= ? ;";       
         $sql=$conectar->prepare($sql);       
         $sql->bindValue(1,$NumeroEditorial);   
         $sql->execute();   
         return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
     }
+
+}
 
 
 ?>
