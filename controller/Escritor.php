@@ -29,16 +29,22 @@
             echo json_encode($datos);
         break;
         
-        case"InsertEscritores":
+        case"InsertEscritor":
             $datos=$escritor->insert_escritor($body["NumeroEscritor"],$body["NombreEscritor"],$body["ApellidosEscritor"],$body["FechaNacimiento"],$body["Nacionalidad"],$body["CantidadLibrosEscritos"],$body["Email"]);
             echo json_encode("Escritor agregado con éxito");
         break;
 
-        case"UpdateEscritores":
+        case"UpdateEscritor":
             $datos=$escritor->update_escritor($body["NumeroEscritor"],$body["NombreEscritor"],$body["ApellidosEscritor"],$body["FechaNacimiento"],$body["Nacionalidad"],$body["CantidadLibrosEscritos"],$body["Email"]);
             echo json_encode("Escritor actualizado con éxito");
+           // echo json_encode($datos);
+
         break;
 
+        case "DeleteEscritor":
+            $datos=$escritor->delete_escritor($body["NumeroEscritor"]);
+            echo json_encode("Registro de Escritor Eliminado");
+        break;
         
 
 
