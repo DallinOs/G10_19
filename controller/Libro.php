@@ -32,17 +32,17 @@
         
         case "Insert_libro":
             $datos = $Libro-> Insert_libro($body["CodigoDeLibro"],$body["NombreLibro"],$body["NombreEscritor"],$body["FechaPublicacion"],$body["ISBN"],$body["Precio"],$body["Editorial"]);
-            echo json_encode($datos);
+            echo json_encode("Nuevo Libro Insertado Con Exito");
         break;
     
         case "Update_libro":
             $datos = $Libro-> Update_libro($body["CodigoDeLibro"],$body["NombreLibro"],$body["NombreEscritor"],$body["FechaPublicacion"],$body["ISBN"],$body["Precio"],$body["Editorial"]);
-            echo json_encode($datos);
+            echo json_encode("Libro Actualizado Con Exito");
         break;
 
         case "Delete_libro":
             $datos = $Libro-> Delete_libro($body["CodigoDeLibro"]);
-            echo json_encode($datos);
+            echo json_encode("Libro Borrado Con Exito");
         break;
     }
 
