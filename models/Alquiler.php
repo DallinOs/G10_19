@@ -39,15 +39,15 @@
         public function update_Alquiler($CodigoDeLibro,$NombreLibro,$FechaAlqui,$NombreCliente,$Direccion,$DiasAlqui,$PrecioAlqui){
             $conectar= parent:: conexion();
             parent::set_names();
-            $sql="UPDATE Alquiler set CodigoDeLibro=?, NombreLibro=?, FechaAlqui=?, NombreCliente=?, Direccion=?, DiasAlqui=?, PrecioAlqui=? WHERE CodigoDeLibro=$CodigoDeLibro";
+            $sql="UPDATE Alquiler set  NombreLibro=?, FechaAlqui=?, NombreCliente=?, Direccion=?, DiasAlqui=?, PrecioAlqui=? WHERE CodigoDeLibro=?";
             $sql=$conectar->prepare($sql);
-            $sql->bindValue(1,$CodigoDeLibro);
-            $sql->bindValue(2,$NombreLibro);
-            $sql->bindValue(3,$FechaAlqui);
-            $sql->bindValue(4,$NombreCliente);
-            $sql->bindValue(5,$Direccion);
-            $sql->bindValue(6,$DiasAlqui);
-            $sql->bindValue(7,$PrecioAlqui);
+            $sql->bindValue(1,$NombreLibro);
+            $sql->bindValue(2,$FechaAlqui);
+            $sql->bindValue(3,$NombreCliente);
+            $sql->bindValue(4,$Direccion);
+            $sql->bindValue(5,$DiasAlqui);
+            $sql->bindValue(6,$PrecioAlqui);
+            $sql->bindValue(7,$CodigoDeLibro);
             $sql->execute();
             return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
         }
