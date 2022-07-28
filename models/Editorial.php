@@ -38,15 +38,15 @@ Class Editorial extends Conectar{
     public function update_Editorial($NumeroEditorial,$NombreEditorial,$Direccion,$Pais,$FechaDeFundacion,$CantidadDeLibrosImpresos,$NumeroDeTelefono){   
         $conectar= parent:: conexion();        
         parent::set_names();         
-        $sql="UPDATE Editorial set NumeroEditorial= ?, NombreEditorial=?, Direccion=?, Pais=?, FechaDeFundacion=?, CantidadDeLibrosImpresos=?, NumeroDeTelefono=? WHERE NumeroEditorial=$NumeroEditorial ;" ;         
-        $sql=$conectar->prepare($sql);         
-        $sql->bindValue(1,$NumeroEditorial);        
-        $sql->bindValue(2,$NombreEditorial);        
-        $sql->bindValue(3,$Direccion);           
-        $sql->bindValue(4,$Pais);           
-        $sql->bindValue(5,$FechaDeFundacion);         
-        $sql->bindValue(6,$CantidadDeLibrosImpresos);           
-        $sql->bindValue(7,$NumeroDeTelefono);   
+        $sql="UPDATE Editorial set NombreEditorial=?, Direccion=?, Pais=?, FechaDeFundacion=?, CantidadDeLibrosImpresos=?, NumeroDeTelefono=? WHERE NumeroEditorial=? ;" ;         
+        $sql=$conectar->prepare($sql);                 
+        $sql->bindValue(1,$NombreEditorial);        
+        $sql->bindValue(2,$Direccion);           
+        $sql->bindValue(3,$Pais);           
+        $sql->bindValue(4,$FechaDeFundacion);         
+        $sql->bindValue(5,$CantidadDeLibrosImpresos);           
+        $sql->bindValue(6,$NumeroDeTelefono); 
+        $sql->bindValue(7,$NumeroEditorial);  
         $sql->execute();       
        return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);      
     }
