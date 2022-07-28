@@ -42,15 +42,15 @@
         public function update_libro ($CodigoDeLibro,$NombreLibro,$NombreEscritor,$FechaPublicacion,$ISBN,$Precio,$Editorial){
             $conectar = parent::conexion();
             parent:: set_names();
-            $sql = "UPDATE Libro SET CodigoDeLibro=?,NombreLibro=?,NombreEscritor=?,FechaPublicacion=?,ISBN=?,Precio=?,Editorial=? WHERE CodigoDeLibro =$CodigoDeLibro";
+            $sql = "UPDATE Libro SET NombreLibro=?,NombreEscritor=?,FechaPublicacion=?,ISBN=?,Precio=?,Editorial=? WHERE CodigoDeLibro=?";
             $sql = $conectar->prepare($sql);
-            $sql -> bindValue(1,$CodigoDeLibro);
-            $sql -> bindValue(2,$NombreLibro);
-            $sql -> bindValue(3,$NombreEscritor);
-            $sql -> bindValue(4,$FechaPublicacion);
-            $sql -> bindValue(5,$ISBN);
-            $sql -> bindValue(6,$Precio);
-            $sql -> bindValue(7,$Editorial);
+            $sql -> bindValue(1,$NombreLibro);
+            $sql -> bindValue(2,$NombreEscritor);
+            $sql -> bindValue(3,$FechaPublicacion);
+            $sql -> bindValue(4,$ISBN);
+            $sql -> bindValue(5,$Precio);
+            $sql -> bindValue(6,$Editorial);
+            $sql -> bindValue(7,$CodigoDeLibro);
             $sql->execute();
             return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
         }
