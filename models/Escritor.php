@@ -41,15 +41,15 @@
         public function update_escritor($NumeroEscritor,$NombreEscritor,$ApellidosEscritor,$FechaNacimiento,$Nacionalidad,$CantidadLibrosEscritos,$Email){
             $conectar= parent:: conexion();
             parent::set_names();
-            $sql="UPDATE Escritor SET NumeroEscritor=?, NombreEscritor=?, ApellidosEscritor=?, FechaNacimiento=?, Nacionalidad=?, CantidadLibrosEscritos=?, Email=? WHERE NumeroEscritor=$NumeroEscritor;";
+            $sql="UPDATE Escritor SET  NombreEscritor=?, ApellidosEscritor=?, FechaNacimiento=?, Nacionalidad=?, CantidadLibrosEscritos=?, Email=? WHERE NumeroEscritor=?;";
             $sql=$conectar->prepare($sql);
-            $sql->bindValue(1,$NumeroEscritor);
-            $sql->bindValue(2,$NombreEscritor);
-            $sql->bindValue(3,$ApellidosEscritor);
-            $sql->bindValue(4,$FechaNacimiento);
-            $sql->bindValue(5,$Nacionalidad);
-            $sql->bindValue(6,$CantidadLibrosEscritos);
-            $sql->bindValue(7,$Email);
+            $sql->bindValue(1,$NombreEscritor);
+            $sql->bindValue(2,$ApellidosEscritor);
+            $sql->bindValue(3,$FechaNacimiento);
+            $sql->bindValue(4,$Nacionalidad);
+            $sql->bindValue(5,$CantidadLibrosEscritos);
+            $sql->bindValue(6,$Email);
+            $sql->bindValue(7,$NumeroEscritor);
             $sql->execute();
             return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
         }
@@ -63,10 +63,6 @@
             $sql->execute();
             return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
         }
-
-
-
-
 
     }
 
